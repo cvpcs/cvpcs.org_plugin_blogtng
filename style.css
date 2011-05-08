@@ -147,7 +147,7 @@ div.dokuwiki form#blogtng__search_form label {
 
 div.dokuwiki div.blogtng_comment_status_hidden {
   opacity: 0.5;
-  filter: alpha(opacity = 50);
+/*  filter: alpha(opacity=50);*/
 }
 
 /* tag list */
