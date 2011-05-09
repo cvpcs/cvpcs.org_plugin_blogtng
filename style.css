@@ -255,3 +255,7 @@ div.dokuwiki div.blogtng_newform h3 {
     font-size: 110%;
     margin: 0.2em;
 }
+
+div.dokuwiki div.blogtng_entry div#dsq-subscribe {
+    display: none;
+}
