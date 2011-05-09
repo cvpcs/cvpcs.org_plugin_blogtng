@@ -13,6 +13,7 @@ $meta['comments_xhtml_renderer']  = array(
                                        'multicheckbox',
                                        '_choices' => array_diff(plugin_list('syntax'), $blogtng_meta__excluded_syntax),
                                    );
+$meta['comments_disqus_shortname'] = array('string','_pattern' => '/^[0-9a-zA-Z\-]+$/');
 $meta['editform_set_date']        = array('onoff');
 $meta['tags']                     = array('string');
 $meta['receive_linkbacks']         = array('onoff');

@@ -5,6 +5,7 @@ $conf['comments_gravatar_rating']  = 'R';
 $conf['comments_gravatar_default'] = 'blank';
 $conf['comments_forbid_syntax']    = '';
 $conf['comments_xhtml_renderer']   = '';
+$conf['comments_disqus_shortname'] = '';
 $conf['editform_set_date']         = 0;
 $conf['tags']                      = '';
 $conf['receive_linkbacks']         = 1;

@@ -479,7 +479,11 @@ class helper_plugin_blogtng_entry extends DokuWiki_Plugin {
             $this->commenthelper =& plugin_load('helper', 'blogtng_comments');
         }
         $this->commenthelper->load($this->entry['pid']);
-        $this->commenthelper->tpl_comments($name,$types);
+        if ($this->entry['commentstatus'] == 'disqus') {
+            $this->commenthelper->tpl_comments_disqus();
+        } else {
+            $this->commenthelper->tpl_comments($name,$types);
+        }
     }
 
     /**
@@ -492,7 +496,11 @@ class helper_plugin_blogtng_entry extends DokuWiki_Plugin {
             $this->commenthelper =& plugin_load('helper', 'blogtng_comments');
         }
         $this->commenthelper->load($this->entry['pid']);
-        $this->commenthelper->tpl_count($fmt_zero_comments, $fmt_one_comment, $fmt_comments);
+        if ($this->entry['commentstatus'] == 'disqus') {
+            $this->commenthelper->tpl_count_disqus();
+        } else {
+            $this->commenthelper->tpl_count($fmt_zero_comments, $fmt_one_comment, $fmt_comments);
+        }
     }
 
 
@@ -558,7 +566,7 @@ class helper_plugin_blogtng_entry extends DokuWiki_Plugin {
      * Wrapper around commenthelper->tpl_form()
      */
     function tpl_commentform() {
-        if ($this->entry['commentstatus'] == 'closed' || $this->entry['commentstatus'] == 'disabled') return;
+        if ($this->entry['commentstatus'] == 'closed' || $this->entry['commentstatus'] == 'disabled' || $this->entry['commentstatus'] == 'disqus') return;
         if(!$this->commenthelper) {
             $this->commenthelper =& plugin_load('helper', 'blogtng_comments');
         }

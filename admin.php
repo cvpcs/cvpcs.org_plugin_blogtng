@@ -100,7 +100,7 @@ class admin_plugin_blogtng extends DokuWiki_Admin_Plugin {
                 $status = $_REQUEST['btng']['entry']['commentstatus'];
                 if($pid) {
                     $blogs = $this->entryhelper->get_blogs();
-                    if(in_array($status, array('disabled', 'enabled', 'closed'))) {
+                    if(in_array($status, array('disabled', 'enabled', 'closed', 'disqus'))) {
                         $this->entryhelper->load_by_pid($pid);
                         $this->entryhelper->entry['commentstatus'] = $status;
                         $this->entryhelper->save();
@@ -657,7 +657,7 @@ class admin_plugin_blogtng extends DokuWiki_Admin_Plugin {
         $form->addHidden('page', 'blogtng');
         $form->addHidden('btng[entry][pid]', $entry['pid']);
         $form->addElement(formSecurityToken());
-        $form->addElement(form_makeListBoxField('btng[entry][commentstatus]', array('enabled', 'disabled', 'closed'), $entry['commentstatus'], ''));
+        $form->addElement(form_makeListBoxField('btng[entry][commentstatus]', array('enabled', 'disabled', 'closed', 'disqus'), $entry['commentstatus'], ''));
         $form->addElement('<input type="submit" name="btng[admin][entry_set_commentstatus]" class="edit button" value="' . $lang['btn_update'] . '" />');
 
         ob_start();

@@ -25,7 +25,5 @@
     <?php $entry->tpl_created('%F %T')?>
     &middot;
     <?php $entry->tpl_author()?>
-    &middot;
-    <a href="<?php $entry->tpl_link('the__comments')?>" class="wikilink1 blogtng_commentlink"><?php $entry->tpl_commentcount('%d Comments','%d Comment', '%d Comments')?></a>
   </div>
 </div>

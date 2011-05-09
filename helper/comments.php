@@ -456,6 +456,23 @@ class helper_plugin_blogtng_comments extends DokuWiki_Plugin {
         }
     }
 
+    function tpl_count_disqus() {
+        global $ID;
+        global $INFO;
+
+        $doc = '';
+        $doc .= '<script charset="utf-8" type="text/javascript">
+                    <!--//--><![CDATA[//><!--' . "\n";
+        $doc .= "var disqus_shortname  = '" . $this->getConf('comments_disqus_shortname') . "';\n";
+        $doc .= '
+                    //--><!]]>
+                    </script>';
+        $doc .= '<a href="' . wl($ID,'',true) . '#disqus_thread"></a>';
+        $doc .= '<script type="text/javascript" src="http://' . $this->getConf('comments_disqus_shortname') . '.disqus.com/count.js"></script>';
+
+        print $doc;
+    }
+
     /**
      * Print the comemnts
      */
@@ -485,6 +502,28 @@ class helper_plugin_blogtng_comments extends DokuWiki_Plugin {
             $comment->init($row);
             $comment->output($name);
         }
+    }
+
+    function tpl_comments_disqus() {
+        global $ID;
+        global $INFO;
+
+        $doc = '';
+        $doc .= '<script charset="utf-8" type="text/javascript">
+                    <!--//--><![CDATA[//><!--' . "\n";
+        $doc .= "var disqus_shortname  = '" . $this->getConf('comments_disqus_shortname') . "';\n";
+        $doc .= "var disqus_url        = '" . wl($ID,'',true) . "';\n";
+        $doc .= "var disqus_identifier = '" . $ID . "';\n";
+        $doc .= "var disqus_title      = '" . addslashes($INFO['meta']['title']) . "';\n";
+        $doc .= "var disqus_message = '" . addslashes($INFO['meta']['abstract']) . "';\n";
+        $doc .= 'var disqus_container_id = \'disqus__thread\'
+                    //--><!]]>
+                    </script>';
+        $doc .= '<div id="disqus__thread"></div>';
+        $doc .= '<script type="text/javascript" src="http://' . $this->getConf('comments_disqus_shortname') . '.disqus.com/embed.js"></script>';
+        $doc .= '<noscript><a href="http://' . $this->getConf('comments_disqus_shortname') . '.disqus.com/?url=ref">View the discussion thread.</a></noscript>';
+
+        print $doc;
     }
 
     /**
