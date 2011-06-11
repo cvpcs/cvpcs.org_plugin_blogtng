@@ -17,7 +17,7 @@
     </a>
   </h1>
   <p>
-    <?php $entry->tpl_abstract()?><br />
+    <?php $entry->tpl_abstract(0, true)?><br />
   </p>
   <div class="blogtng_footer level1">
     <a href="<?php $entry->tpl_link()?>" class="wikilink1 blogtng_permalink">Read more...</a>

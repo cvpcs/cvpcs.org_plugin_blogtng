@@ -420,13 +420,28 @@ class helper_plugin_blogtng_entry extends DokuWiki_Plugin {
         echo '<a href="' . wl ($this->entry['page']) . '" title="' . hsc($this->entry['title']) . '">' . $str . '</a>';
     }
 
-    function tpl_abstract($len=0) {
+    function tpl_abstract($len=0,$image=false) {
         $this->_load_abstract();
         if($len){
             $abstract = utf8_substr($this->entry['abstract'], 0, $len).'…';
         }else{
             $abstract = $this->entry['abstract'];
         }
+
+        if($image && ($dom = DOMDocument::loadHTML($this->get_entrycontent())) !== false){
+            foreach($dom->getElementsByTagName('img') as $entry){
+                if($entry->nodeType == XML_ELEMENT_NODE){
+                    $dom2 = new DOMDocument();
+                    $entry2 = $dom2->createElement('img');
+                    $entry2->setAttribute('src', $entry->getAttribute('src'));
+                    $entry2->setAttribute('class', 'blogtng_abstract_thumbnail');
+                    $dom2->appendChild($entry2);
+                    echo $dom2->saveHTML();
+                }
+                break;
+            }
+        }
+
         echo hsc($abstract);
     }
 

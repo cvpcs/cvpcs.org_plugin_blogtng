@@ -90,8 +90,15 @@ div.dokuwiki div#blogtng__admin table td.comment_source {
   width: 5%;
 }
 
+div.dokuwiki div.blogtng_list img.blogtng_abstract_thumbnail {
+    float: left;
+    width: 20%;
+    margin: 0px 10px 5px 0px;
+}
+
 div.dokuwiki div.blogtng_list div.blogtng_footer {
     border-top: 1px solid __border__;
+    clear: both;
 }
 
 div.dokuwiki div.blogtng_entry div.blogtng_footer {
