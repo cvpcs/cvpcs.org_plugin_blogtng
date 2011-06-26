@@ -436,7 +436,9 @@ class helper_plugin_blogtng_entry extends DokuWiki_Plugin {
                     $entry2->setAttribute('src', $entry->getAttribute('src'));
                     $entry2->setAttribute('class', 'blogtng_abstract_thumbnail');
                     $dom2->appendChild($entry2);
+                    echo '<div class="blogtng_abstract_thumbnail_container">';
                     echo $dom2->saveHTML();
+                    echo '</div>';
                 }
                 break;
             }
