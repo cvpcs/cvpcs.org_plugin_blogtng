@@ -1,4 +1,7 @@
 <?php
+$conf['default_commentstatus']     = 'enabled';
+$conf['default_blog']              = '';
+$conf['default_tags']              = '';
 $conf['comments_allow_web']        = 0;
 $conf['comments_subscription']     = 0;
 $conf['comments_gravatar_rating']  = 'R';
@@ -10,5 +13,3 @@ $conf['editform_set_date']         = 0;
 $conf['tags']                      = '';
 $conf['receive_linkbacks']         = 1;
 $conf['send_linkbacks']            = 0;
-$conf['subscribe_noconfirm']       = 0;
-$conf['sqlite_version']            = 'SQLite3';

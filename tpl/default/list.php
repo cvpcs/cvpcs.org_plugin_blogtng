@@ -6,7 +6,10 @@
  * using the 'tpl' attribute. It is used to display a single entry in
  * the list and is called multiple times (once for each shown entry)
  *
- * This example shows only entry abstracts with comment numbers
+ * This example shows full entries and add a footer with info
+ * on tags and comments.
+ *
+ * @var $entry helper_plugin_blogtng_entry
  */
 ?>
 <div class="blogtng_list">

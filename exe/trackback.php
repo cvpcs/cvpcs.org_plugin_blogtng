@@ -22,11 +22,14 @@ require_once (DOKU_INC . 'inc/HTTPClient.php');
 
 class TrackbackServer {
 
+    /** @var  helper_plugin_blogtng_linkback */
+    var $tools;
+
     /**
      * Construct helper and process request.
      */
     function TrackbackServer() {
-        $this->tools =& plugin_load('helper', 'blogtng_linkback');
+        $this->tools = plugin_load('helper', 'blogtng_linkback');
         $this->_process();
     }
 

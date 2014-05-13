@@ -28,13 +28,17 @@ class action_plugin_blogtng_linkback extends DokuWiki_Action_Plugin {
     /**
      * Register the eventhandlers.
      */
-    function register(& $controller) {
+    function register(Doku_Event_Handler $controller) {
         $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'check', array ());
         $controller->register_hook('TPL_ACT_RENDER', 'BEFORE', $this, 'handle_act_render', array ());
         $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'handle_metaheader_output', array ());
         $controller->register_hook('ACTION_HEADERS_SEND', 'BEFORE', $this, 'handle_headers_send', array ());
     }
 
+    /**
+     * @param Doku_Event $event  event object by reference
+     * @param array      $params  empty array as passed to register_hook()
+     */
     function check(&$event, $params) {
         $helper = plugin_load('helper', 'blogtng_linkback');
         if (!$helper->linkbackAllowed()) {
@@ -45,6 +49,9 @@ class action_plugin_blogtng_linkback extends DokuWiki_Action_Plugin {
 
     /**
      * Handler for the TPL_ACT_RENDER event
+     *
+     * @param Doku_Event $event  event object by reference
+     * @param array      $params  empty array as passed to register_hook()
      */
     function handle_act_render(& $event, $params) {
         if (!$this->run) return;
@@ -68,6 +75,10 @@ class action_plugin_blogtng_linkback extends DokuWiki_Action_Plugin {
 
     /**
      * Handler for the TPL_METAHEADER_OUTPUT event
+     *
+     * @param Doku_Event $event  event object by reference
+     * @param array      $params  empty array as passed to register_hook()
+     * @return void|bool
      */
     function handle_metaheader_output(& $event, $params) {
         if (!$this->run) return;
@@ -83,6 +94,10 @@ class action_plugin_blogtng_linkback extends DokuWiki_Action_Plugin {
 
     /**
      * Handler for the ACTION_HEADERS_SEND event
+     *
+     * @param Doku_Event $event  event object by reference
+     * @param array      $params  empty array as passed to register_hook()
+     * @return void|bool
      */
     function handle_headers_send(& $event, $params) {
         if (!$this->run) return;
