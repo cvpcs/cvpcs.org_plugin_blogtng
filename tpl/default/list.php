@@ -15,7 +15,7 @@
 <div class="blogtng_list">
   <h1>
     <a href="<?php $entry->tpl_link()?>" class="blogtng_permalink">
-      [<?php $entry->tpl_created('%F')?>]
+      [<?php $entry->tpl_created('%Y-%m-%d')?>]
       <?php $entry->tpl_title()?>
     </a>
   </h1>
@@ -25,7 +25,7 @@
   <div class="blogtng_footer level1">
     <a href="<?php $entry->tpl_link()?>" class="wikilink1 blogtng_permalink">Read more...</a>
     &middot;
-    <?php $entry->tpl_created('%F %T')?>
+    <?php $entry->tpl_created('%Y-%m-%d %H:%M:%S')?>
     &middot;
     <?php $entry->tpl_author()?>
   </div>
